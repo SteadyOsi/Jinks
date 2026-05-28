@@ -8,11 +8,32 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
+type Message = {
+    id: number;
+    sender: string;
+    content: string;
+    timestamp: string;
+}
+
 app.get("/", (req, res) => {
-    res.send("<h1>Server is running <h1>"); 
+    res.send("server is running");
 });
 
-app.listen(PORT, ()=> {
+app.get("/messages", (req, res) => {
+    res.json(messages);
+});
+
+app.post("/messages", (req, res) => {
+    const message = req.body.message;
+
+    messages.push(message);
+
+    res.json({
+        success: true,
+        messages: messages
+    });
+});
+
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
