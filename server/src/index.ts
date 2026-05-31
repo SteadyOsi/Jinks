@@ -27,19 +27,22 @@ app.get("/messages", (req, res) => {
 });
 
 app.get("/messages/:id", (req, res) => {
-    let urlID = parseInt(req.url.split('/')[2]);
+    // get id
+    const id = parseInt(req.params.id);
 
-    if(isNaN(urlID)){
-        res.status(400).send("Unexpected input");
-    } else {
-        
-        messages.forEach(element => {
-            if(element.id === urlID){
-                res.json(element);
-            } 
-        });
-        res.status(404).send("No data with that ID");
-    };
+    if(Number.isNaN(id)){
+        return res.status(400).json({error: "Bad Request"});
+    }
+
+    //find matching message 
+    const mes = messages.find(mes => mes.id === id);
+
+    //If found 
+    if(mes) {
+        res.json(mes);
+    } else { // otherwise
+            return res.status(404).json({error: "data not found"});
+    }
     
 });
 
