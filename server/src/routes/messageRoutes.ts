@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
     res.json(messages);
 });
 
+// CRUD operations for messages
 router.get("/:id", getID);
 router.delete("/:id", delID);
 router.post("/", addMes);
