@@ -9,9 +9,9 @@ router.get("/", (req, res) => {
     res.json(users);
 });
 
-router.get("/:username", getUser);
-router.delete("/:username", delUser);
+router.get("/:userID", getUser);
+router.delete("/:userID", delUser);
 router.post("/", addUser);
-router.patch("/:username", updateUser);
+router.patch("/:userID", updateUser);
 
 export default router;
