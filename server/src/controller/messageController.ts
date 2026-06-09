@@ -17,7 +17,7 @@ export function getID(req: Request, res: Response) {
     if(mes) {
         res.json(mes);
     } else { // otherwise
-            return res.status(404).json({error: "data not found"});
+        return res.status(404).json({error: "data not found"});
     }
     
 }

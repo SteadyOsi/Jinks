@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import messageRouter from "./routes/messageRoutes";
+import userRouter from "./routes/userRoutes";
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/messages/", messageRouter);
+
+app.use("/user/", userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
