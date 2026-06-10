@@ -11,19 +11,27 @@ const firstTable = `
 `;
 
 db.exec(firstTable);
-const addData = `
+
+const stmt = db.prepare(`
     INSERT INTO people (name, email, age) VALUES
-    ('JACK', 'JACK@example.com', 30)
-    `;
+    ('terry', 'bp@example.com', 30),
+    ('john', 'john@example.com', 25),
+    ('blue', 'Bluey@example.com', 4),
+    ('jack', 'jack@example.com', 22),
+    ('Tom', 'tom@example.com', 23)
+`);
 
-db.exec(addData);
+stmt.run();
 
+const stmt2 = db.prepare(`SELECT * FROM people`);
+const people = stmt2.all();
 
-const sql = `SELECT * FROM people`;
+const stmt3 = db.prepare(`DELETE FROM people WHERE people.id == 2`);
+stmt3.run();
 
-const stmt = db.prepare(sql);
-const people = stmt.all();
+const stmt4 = db.prepare(`SELECT * FROM people`);
+const people2 = stmt4.all();
 
 console.log(people);
-
+console.log(people2);
 db.close();
