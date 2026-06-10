@@ -14,24 +14,24 @@ db.exec(firstTable);
 
 const stmt = db.prepare(`
     INSERT INTO people (name, email, age) VALUES
-    ('terry', 'bp@example.com', 30),
-    ('john', 'john@example.com', 25),
-    ('blue', 'Bluey@example.com', 4),
-    ('jack', 'jack@example.com', 22),
-    ('Tom', 'tom@example.com', 23)
+    (?, ?, ?)
 `);
 
-stmt.run();
+stmt.run('jack', 'pill@example.com', '21');
+stmt.run('phill', 'phill@example.com', '33');
+stmt.run('Tom', 'tom@example.com', '34');
+stmt.run('jessica', 'jess@example.com', '19');
 
 const stmt2 = db.prepare(`SELECT * FROM people`);
 const people = stmt2.all();
 
-const stmt3 = db.prepare(`DELETE FROM people WHERE people.id == 2`);
-stmt3.run();
+// const stmt3 = db.prepare(`DELETE FROM people WHERE people.id == 2`);
+// stmt3.run();
 
 const stmt4 = db.prepare(`SELECT * FROM people`);
 const people2 = stmt4.all();
 
 console.log(people);
+console.log("");
 console.log(people2);
 db.close();
