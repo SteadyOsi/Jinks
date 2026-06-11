@@ -1,16 +1,46 @@
-const Database = require('better-sqlite3');
-const db = new Database('jinksData.db', { verbose: console.log });
+import Database from "better-sqlite3";
+import { Message } from "../types/Message";
+import { User } from "../types/User";
 
-const firstTable = `
-    CREATE TABLE IF NOT EXISTS people (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT UNIQUE NOT NULL,
-        age INTEGER
-    )
-`;
+// Initialise DB and DB tables
+export function initaliseDbConnection() {
+    const Database = require('better-sqlite3');
 
-db.exec(firstTable);
+    return new Database('jinksData.db', { verbose: console.log });
+}
+
+
+export function initaliseDbTables(db: Database.Database) {
+    const usersTable = `
+        CREATE TABLE users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password STRING NOT NULL
+        )
+    `;
+
+    db.exec(usersTable);
+
+    const messageTable = `
+        CREATE TABLE messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            senderID int,
+            contents TEXT,
+            time_stamp timestamp 
+        )
+    `;
+}
+
+export function addMessage(mes: Message) {
+
+}
+
+export function createUser(user: User) {
+    
+}
+
+
 
 const stmt = db.prepare(`
     INSERT INTO people (name, email, age) VALUES
