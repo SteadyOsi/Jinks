@@ -1,5 +1,7 @@
 import db from "./db";
 
+// creates the tables for user and message if they don't exist
+
 export function initaliseDbTables() {
     const usersTable = `
         CREATE TABLE IF NOT EXIST users(
