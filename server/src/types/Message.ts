@@ -1,6 +1,7 @@
 export type Message = {
     id: number;
     senderID: number;
+    receiverID: number;
     content: string;
-    timestamp: string;
+    createdAT: string;
 }

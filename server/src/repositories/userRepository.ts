@@ -3,10 +3,10 @@ import db from "../database/db";
 
 export function createUser(user: User){
     const stmt = db.prepare(`
-        INSERT INTO users (name, email password) VALUES (?, ?, ?)    
+        INSERT INTO users (username, email password) VALUES (?, ?, ?)    
     `);
 
-    stmt.run(user.userName, user.email, user.password);
+    stmt.run(user.username, user.email, user.password);
     
 }
 
