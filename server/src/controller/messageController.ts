@@ -45,10 +45,10 @@ export function delID(req: Request, res: Response) {
 
 export function addMes(req: Request, res: Response) {
 
-    if(typeof req.body.sender === "string" && typeof req.body.content === "string" && req.body.sender.trim() !== "" && req.body.content.trim() !== ""){
+    if(typeof req.body.senderID === "string" && typeof req.body.content === "string" && req.body.senderID.trim() !== "" && req.body.content.trim() !== ""){
         const newMessage: Message = {
             id: nextId,
-            sender: req.body.sender,
+            senderID: req.body.senderID,
             content: req.body.content,
             timestamp: new Date().toISOString()
         };

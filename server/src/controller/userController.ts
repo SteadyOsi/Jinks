@@ -42,10 +42,10 @@ export async function addUser(req: Request, res: Response){
 
     if(typeof req.body.userName === "string" 
         && typeof req.body.email === "string" 
-        && typeof req.body.passwordHashed === "string"
+        && typeof req.body.password === "string"
         && req.body.userName.trim() !== "" 
         && req.body.email.trim() !== ""
-        && req.body.passwordHashed.trim() !== ""){
+        && req.body.password.trim() !== ""){
 
         if(users.find(user => user.userName === req.body.userName)){
             return res.status(400).json({error: "user name taken"});
@@ -55,7 +55,7 @@ export async function addUser(req: Request, res: Response){
             userID: nextUserId,
             userName: req.body.userName,
             email: req.body.email,
-            passwordHashed: await argon2.hash(req.body.passwordHashed)
+            password: await argon2.hash(req.body.password)
         };
 
         incUserID();
@@ -89,7 +89,7 @@ export async function updateUser(req: Request, res: Response) {
 
     const username = req.body.username;
     const email = req.body.email;
-    const passwordHashed = await argon2.hash(req.body.passwordHashed);
+    const password = await argon2.hash(req.body.password);
 
     // Username update
     if (username !== undefined) {
@@ -122,13 +122,13 @@ export async function updateUser(req: Request, res: Response) {
     }
 
     // Password update
-    if (passwordHashed !== undefined) {
+    if (password !== undefined) {
 
-        if (typeof passwordHashed !== "string" || passwordHashed.trim() === "") {
+        if (typeof password !== "string" || password.trim() === "") {
             return res.status(400).json({error: "password must be a non-empty string"});
         }
 
-        users[userIndex].passwordHashed = passwordHashed;
+        users[userIndex].password = password;
     }
 
     return res.status(200).json(users[userIndex]);
