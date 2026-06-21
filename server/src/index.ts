@@ -2,6 +2,10 @@ import express from "express";
 import cors from "cors";
 import messageRouter from "./routes/messageRoutes";
 import userRouter from "./routes/userRoutes";
+import { initaliseDbTables } from "./database/schema";
+
+// creates DB tables if not already done
+initaliseDbTables();
 
 const app = express();
 

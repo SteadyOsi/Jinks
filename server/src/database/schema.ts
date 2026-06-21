@@ -1,10 +1,8 @@
 import db from "./db";
 
-// creates the tables for user and message if they don't exist
-
 export function initaliseDbTables() {
     const usersTable = `
-        CREATE TABLE IF NOT EXIST users(
+        CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL,
@@ -12,15 +10,16 @@ export function initaliseDbTables() {
         )
     `;
 
+    db.exec(usersTable);
+
     const messageTable = `
-        CREATE TABLE IF NOT EXIST messages (
+        CREATE TABLE IF NOT EXISTS messages (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            senderID int,
-            contents TEXT,
-            time_stamp timestamp 
+            senderID INTEGER NOT NULL,
+            receiverID INTEGER NOT NULL,
+            content TEXT NOT NULL,
+            createdAT TEXT NOT NULL 
         )
     `;
-
-    db.exec(usersTable);
     db.exec(messageTable);
 }
