@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/better-sqlite3": "^7.6.13",
+    "agron": "^0.1.5",
     "argon2": "^0.44.0",
     "better-sqlite3": "^12.10.0",
     "cors": "^2.8.6",
