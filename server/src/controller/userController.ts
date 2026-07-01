@@ -1,6 +1,6 @@
 import {Request, Response } from "express";
 import { User } from "../types/User";
-import {users, nextUserId, incUserID } from "../data/userStore";
+import { createUser, getUserById, deleteUser } from "../repositories/userRepository";
 import argon2 from "argon2";
 
 export function getUser(req: Request, res: Response){
@@ -10,7 +10,7 @@ export function getUser(req: Request, res: Response){
         return res.status(400).json({ error: "invalid userID" });
     }
 
-    const user = users.find(user => user.userID === userId);
+    const user = getUserById(userId);
 
     if(user) {
         res.json(user);
@@ -21,20 +21,19 @@ export function getUser(req: Request, res: Response){
 
 export function delUser(req: Request, res: Response){
     const userId = Number(req.params.userID);
+
     if (Number.isNaN(userId)) {
         return res.status(400).json({ error: "invalid userID" });
     }
 
-    // find matching user index
-    const userIndex = users.findIndex(user => user.userID === userId);
+    const resultFromDel = deleteUser(userId);
 
-    if(userIndex !== -1){
-        users.splice(userIndex, 1);
-        res.status(204).send();
-    } else {
+    if(resultFromDel.changes === 0){
         return res.status(404).json({error: "data not found"});
+        
+    } else {
+        return res.status(204).send();
     }
-
 }
 
 // added async for hashing password
@@ -53,7 +52,7 @@ export async function addUser(req: Request, res: Response){
 
         const newUser: User = {
             userID: nextUserId,
-            userName: req.body.userName,
+            username: req.body.userName,
             email: req.body.email,
             password: await argon2.hash(req.body.password)
         };

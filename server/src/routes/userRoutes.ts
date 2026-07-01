@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { users } from "../data/userStore";
+import { getAllUsers } from "../repositories/userRepository";
 import {getUser, delUser, addUser, updateUser } from "../controller/userController";
 
 const router = Router();
 
-// just temp while testing this
+// just temp while testing this, Goes directly to UserRepsitory for 
 router.get("/", (req, res) => {
-    res.json(users);
+    res.json(getAllUsers());
 });
 
 router.get("/:userID", getUser);

@@ -3,11 +3,23 @@ import db from "../database/db";
 
 export function createUser(user: User){
     const stmt = db.prepare(`
-        INSERT INTO users (username, email password) VALUES (?, ?, ?)    
+        INSERT INTO users (username, email, password) VALUES (?, ?, ?)    
     `);
 
     stmt.run(user.username, user.email, user.password);
+}
+
+// used in adduser for seeing if another user with the same name exists.
+export function findUserByName(username: string) {
+    const stmt = db.prepare(`
+        SELECT *
+        FROM users
+        WHERE username = ?  
+    `);
+
+    const user = stmt.get(username); // use get() as we are only expecting one user to be returned.
     
+    return user;
 }
 
 export function getUserById(userid: number){
@@ -17,7 +29,7 @@ export function getUserById(userid: number){
         WHERE id = ?  
     `);
 
-    const user = stmt.get(1);
+    const user = stmt.get(userid);
 
     return user;
 }
@@ -28,7 +40,7 @@ export function getAllUsers(){
         FROM users
     `);
 
-    const users = stmt.all();
+    const users = stmt.all() as User[];
 
     return users;
 }
@@ -40,5 +52,7 @@ export function deleteUser(userid: number){
         WHERE id = ?  
     `);
 
-    stmt.run(userid);
+    const result = stmt.run(userid); // if result.changes === 0 then no user with that ID existed.
+
+    return result;
 }
