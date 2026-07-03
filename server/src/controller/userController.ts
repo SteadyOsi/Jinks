@@ -46,20 +46,18 @@ export async function addUser(req: Request, res: Response){
         && req.body.email.trim() !== ""
         && req.body.password.trim() !== ""){
 
-        if(users.find(user => user.userName === req.body.userName)){
-            return res.status(400).json({error: "user name taken"});
-        }
-
         const newUser: User = {
-            userID: nextUserId,
+            userID: 0,
             username: req.body.userName,
             email: req.body.email,
             password: await argon2.hash(req.body.password)
         };
 
-        incUserID();
+        const CreationResult = createUser(newUser);
 
-        users.push(newUser);
+        if(!CreationResult){
+            return res.status(400).json({error: "error occured in creating this user"}); 
+        }
 
         res.json({
             success: true,
@@ -67,7 +65,7 @@ export async function addUser(req: Request, res: Response){
         });
         
     } else {
-        res.status(400).send("Ya fucked up");
+        return res.status(400).send("Bad request");
     }
 
 }

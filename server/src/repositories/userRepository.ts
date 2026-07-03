@@ -6,7 +6,8 @@ export function createUser(user: User){
         INSERT INTO users (username, email, password) VALUES (?, ?, ?)    
     `);
 
-    stmt.run(user.username, user.email, user.password);
+    const result = stmt.run(user.username, user.email, user.password);
+    return result;
 }
 
 // used in adduser for seeing if another user with the same name exists.
