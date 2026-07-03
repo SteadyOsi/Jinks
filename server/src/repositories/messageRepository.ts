@@ -1,6 +1,10 @@
 import { Message } from "../types/Message";
 import db from "../database/db";
 
+export function getAllMessages(){
+
+}
+
 export function addMessage(message: Message){
 
 };

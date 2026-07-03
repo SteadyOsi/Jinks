@@ -47,7 +47,7 @@ export async function addUser(req: Request, res: Response){
         && req.body.password.trim() !== ""){
 
         const newUser: User = {
-            userID: 0,
+            userID: -1,
             username: req.body.userName,
             email: req.body.email,
             password: await argon2.hash(req.body.password)
@@ -72,9 +72,9 @@ export async function addUser(req: Request, res: Response){
 
 export async function updateUser(req: Request, res: Response) {
 
-    const userId = Number(req.params.userID);
+    const userId = Number(req.params.userID); // grabs Id 
 
-    if (Number.isNaN(userId)) {
+    if (Number.isNaN(userId)) { // validates URL
         return res.status(400).json({error: "invalid userID"});
     }
 

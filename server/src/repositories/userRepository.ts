@@ -20,7 +20,7 @@ export function findUserByName(username: string) {
 
     const user = stmt.get(username); // use get() as we are only expecting one user to be returned.
     
-    return user;
+     return user;
 }
 
 export function getUserById(userid: number){

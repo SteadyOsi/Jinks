@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { messages } from "../data/messageStore";
+import { getAllMessages } from "../repositories/messageRepository";
 import {getID, delID, addMes, updateMes} from "../controller/messageController"
 
 const router = Router();
 
 router.get("/", (req, res) => {
-    res.json(messages);
+    res.json(getAllMessages());
 });
 
 // CRUD operations for messages
