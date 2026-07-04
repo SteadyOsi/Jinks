@@ -1,7 +1,7 @@
 import { Message } from "../types/Message";
 import db from "../database/db";
 
-export function getAllMessages(){
+export function getAllMessages(){ // used in testing
     const stmt = db.prepare(`
         SELECT *
         FROM messages
@@ -9,22 +9,50 @@ export function getAllMessages(){
 
     const messages = stmt.all() as Message[];
     
-     return messages;
-}
-
-export function addMessage(message: Message){
-
+    return messages;
 };
 
-export function getMesByMesId(userId: number){
+export function getMesByMesId(mesId: number){
+    const stmt = db.prepare(`
+        SELECT *
+        FROM messages
+        WHERE id = ?
+    `);
 
+    const messages = stmt.get(mesId) as Message;
+    
+    return messages;
 };
 
-export function delMesByMesId(messageId: number){
+export function addMessage(mes: Message){
+    const stmt = db.prepare(`
+        INSERT INTO messages (senderID, receiverID, content, createdAT) VALUES (?, ?, ?, ?)    
+    `);
 
+    const result = stmt.run(mes.senderID, mes.receiverID, mes.content, mes.createdAT);
+    return result;
 };
 
-export function updateMesByMesId(messageId: number, message: Message){
+export function delMesByMesId(mesId: number){
+    const stmt = db.prepare(`
+        DELETE 
+        FROM messages
+        WHERE id = ?  
+    `);
 
+    const result = stmt.run(mesId); // if result.changes === 0 then no user with that ID existed.
+
+    return result;
 };
 
+export function updateMesByMesId(mesId: number, mesContent: String){
+    const stmt = db.prepare(`
+        UPDATE messages
+        SET content = ?
+        WHERE id = ?
+    `);
+
+    const result = stmt.run(mesContent, mesId);
+
+    return result;
+};
