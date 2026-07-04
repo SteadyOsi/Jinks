@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Message } from "../types/Message";
-import { messages, nextId, incID } from "../data/messageStore";
+import { getAllMessages, addMessage, getMesByMesId, delMesByMesId, updateMesByMesId } from "../repositories/messageRepository";
 
 export function getID(req: Request, res: Response) {
     // get id

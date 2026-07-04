@@ -2,7 +2,14 @@ import { Message } from "../types/Message";
 import db from "../database/db";
 
 export function getAllMessages(){
+    const stmt = db.prepare(`
+        SELECT *
+        FROM messages
+    `);
 
+    const messages = stmt.all() as Message[];
+    
+     return messages;
 }
 
 export function addMessage(message: Message){

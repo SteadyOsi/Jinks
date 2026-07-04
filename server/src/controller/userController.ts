@@ -1,9 +1,9 @@
 import {Request, Response } from "express";
 import { User } from "../types/User";
-import { createUser, getUserById, deleteUser } from "../repositories/userRepository";
+import { createUser, getUserById, deleteUser, updateUserName, updateUserEmail, updateUserPassword } from "../repositories/userRepository";
 import argon2 from "argon2";
 
-export function getUser(req: Request, res: Response){
+export function getUser(req: Request, res: Response){ // get's user by ID
 
     const userId = Number(req.params.userID);
     if (Number.isNaN(userId)) {
@@ -70,42 +70,33 @@ export async function addUser(req: Request, res: Response){
 
 }
 
+
+// This function needs to be optimised: 
+// - possible errors, some things can update but may hit a error later. now shoing that the eariler changes happend.
+// - 
 export async function updateUser(req: Request, res: Response) {
 
     const userId = Number(req.params.userID); // grabs Id 
-
-    if (Number.isNaN(userId)) { // validates URL
-        return res.status(400).json({error: "invalid userID"});
-    }
-
-    const userIndex = users.findIndex(user => user.userID === userId);
-
-    if (userIndex === -1) {
-        return res.status(404).json({error: "user not found"});
-    }
-
     const username = req.body.username;
     const email = req.body.email;
     const password = await argon2.hash(req.body.password);
 
+    if (Number.isNaN(userId)) { // validates ID number in request
+        return res.status(400).json({error: "invalid userID"});
+    }
+
     // Username update
     if (username !== undefined) {
 
-        if (typeof username !== "string" || username.trim() === "") {
+        if (typeof username !== "string" || username.trim() === "") { // input checks
             return res.status(400).json({error: "username must be a non-empty string"});
         }
 
-        const existingUser = users.find(
-            user =>
-                user.userName === username &&
-                user.userID !== userId
-        );
+        const userNameUpdateResult = updateUserName(userId, username);
 
-        if (existingUser) {
-            return res.status(400).json({error: "username already taken"});
+        if (userNameUpdateResult) {
+            return res.status(400).json({error: "error updating username"});
         }
-
-        users[userIndex].userName = username;
     }
 
     // Email update
@@ -115,7 +106,11 @@ export async function updateUser(req: Request, res: Response) {
             return res.status(400).json({error: "email must be a non-empty string"});
         }
 
-        users[userIndex].email = email;
+        const emailUpdateResult = updateUserEmail(userId, email);
+
+        if (emailUpdateResult) {
+            return res.status(400).json({error: "error updating email"});
+        }
     }
 
     // Password update
@@ -125,8 +120,12 @@ export async function updateUser(req: Request, res: Response) {
             return res.status(400).json({error: "password must be a non-empty string"});
         }
 
-        users[userIndex].password = password;
+        const passwordUpdateResult = updateUserPassword(userId, password);
+
+        if (passwordUpdateResult) {
+            return res.status(400).json({error: "error updating password"});
+        }
     }
 
-    return res.status(200).json(users[userIndex]);
+    return res.status(200).json(getUserById(userId));
 }

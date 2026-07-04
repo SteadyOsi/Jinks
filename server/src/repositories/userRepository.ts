@@ -20,7 +20,7 @@ export function findUserByName(username: string) {
 
     const user = stmt.get(username); // use get() as we are only expecting one user to be returned.
     
-     return user;
+     return user as User;
 }
 
 export function getUserById(userid: number){
@@ -32,7 +32,7 @@ export function getUserById(userid: number){
 
     const user = stmt.get(userid);
 
-    return user;
+    return user as User;
 }
 
 export function getAllUsers(){
@@ -54,6 +54,43 @@ export function deleteUser(userid: number){
     `);
 
     const result = stmt.run(userid); // if result.changes === 0 then no user with that ID existed.
+
+    return result;
+}
+
+export function updateUserPassword(userid: number, newPassword: string){
+     const stmt = db.prepare(`
+        UPDATE users
+        SET password = ?
+        WHERE id = ?
+    `);
+
+    const result = stmt.run(newPassword, userid);
+
+    return result;
+}
+
+export function updateUserEmail(userid: number, newEmail: string){
+     const stmt = db.prepare(`
+        UPDATE users
+        SET email = ?
+        WHERE id = ?
+    `);
+
+    const result = stmt.run(newEmail, userid);
+
+    return result;
+}
+
+
+export function updateUserName(userid: number, newUsername: string){
+     const stmt = db.prepare(`
+        UPDATE users
+        SET username = ?
+        WHERE id = ?
+    `);
+
+    const result = stmt.run(newUsername, userid);
 
     return result;
 }
