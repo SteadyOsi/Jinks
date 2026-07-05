@@ -32,5 +32,27 @@ export function initaliseDbTables() {
     `;
     db.exec(messageTable);
 
+    // Conversations
+    const conversationsTable = `
+        CREATE TABLE IF NOT EXISTS conversations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            createdAT TEXT NOT NULL,
+            title TEXT NULLABLE
+        )
+    `;
 
+    db.exec(conversationsTable);
+
+    // conversation_members
+    const conversation_Members_Table = `
+        CREATE TABLE IF NOT EXISTS conversations (
+            conversationID INTEGER NOT NULL,
+            userID INTEGER NOT NULL,
+
+            FOREIGN KEY(conversationID) REFERENCES users(id),
+            FOREIGN KEY(userID) REFERENCES conversations(id)
+        )
+    `;
+
+    db.exec(conversation_Members_Table);
 }
