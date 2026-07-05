@@ -79,7 +79,7 @@ export async function updateUser(req: Request, res: Response) {
     const userId = Number(req.params.userID); // grabs Id 
     const username = req.body.username;
     const email = req.body.email;
-    const password = await argon2.hash(req.body.password);
+    const password = req.body.password;
 
     if (Number.isNaN(userId)) { // validates ID number in request
         return res.status(400).json({error: "invalid userID"});
@@ -94,13 +94,13 @@ export async function updateUser(req: Request, res: Response) {
 
         const userNameUpdateResult = updateUserName(userId, username);
 
-        if (userNameUpdateResult) {
+        if (!userNameUpdateResult) {
             return res.status(400).json({error: "error updating username"});
         }
     }
 
-    // Email update
-    if (email !== undefined) {
+    
+    if (email !== undefined) { // Email update
 
         if (typeof email !== "string" || email.trim() === "") {
             return res.status(400).json({error: "email must be a non-empty string"});
@@ -108,21 +108,21 @@ export async function updateUser(req: Request, res: Response) {
 
         const emailUpdateResult = updateUserEmail(userId, email);
 
-        if (emailUpdateResult) {
+        if (!emailUpdateResult) {
             return res.status(400).json({error: "error updating email"});
         }
     }
 
-    // Password update
-    if (password !== undefined) {
+    
+    if (password !== undefined) { // Password update
 
         if (typeof password !== "string" || password.trim() === "") {
             return res.status(400).json({error: "password must be a non-empty string"});
         }
 
-        const passwordUpdateResult = updateUserPassword(userId, password);
+        const passwordUpdateResult = updateUserPassword(userId, await argon2.hash(password));
 
-        if (passwordUpdateResult) {
+        if (!passwordUpdateResult) {
             return res.status(400).json({error: "error updating password"});
         }
     }

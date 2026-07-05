@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Message } from "../types/Message";
-import { addMessage, getMesByMesId, delMesByMesId, updateMesByMesId } from "../repositories/messageRepository";
+import { addMessage, getMesByMesId, delMesByMesId, updateMesByMesId, getConvoByIdS } from "../repositories/messageRepository";
 
 export function getMesID(req: Request, res: Response) { // get message based on message ID
     // get id
@@ -19,7 +19,24 @@ export function getMesID(req: Request, res: Response) { // get message based on 
     } else { // otherwise
         return res.status(404).json({error: "data not found"});
     }
-    
+}
+
+// user one's ID and user two's ID 
+// conversation between them
+export function getConvoUoneToUtwo(req: Request, res: Response){ 
+ 
+    //get User's ID's
+    const userOne = parseInt(req.params.userid1 as string);
+    const userTwo = parseInt(req.params.userid2 as string);
+
+    // get conversations: 
+    const getConvoRes = getConvoByIdS(userOne, userTwo);
+
+    if(getConvoRes){
+        return res.json(getConvoRes);
+    } else {
+        return res.status(404).json({error: "bad request"});
+    }
 }
 
 export function delID(req: Request, res: Response) {
@@ -34,17 +51,22 @@ export function delID(req: Request, res: Response) {
     const mesDelRes =  delMesByMesId(id);
 
     //If found 
-    if(mesDelRes) {
+    if(mesDelRes) { // .changes === 0
         res.status(204).send();
     } else { // otherwise
         return res.status(404).json({error: "data not found"});
     }
-
 }
 
 export function addMes(req: Request, res: Response) {
 
-    if(typeof req.body.senderID === "string" && typeof req.body.content === "string" && req.body.senderID.trim() !== "" && req.body.content.trim() !== "" && req.body.receiverID.trim() !== ""){
+    if(typeof req.body.senderID === "number" 
+        && typeof req.body.content === "string"
+        && typeof req.body.receiverID === "number" 
+        && req.body.senderID.trim() !== "" 
+        && req.body.content.trim() !== "" 
+        && req.body.receiverID.trim() !== ""){
+            
         const newMessage: Message = {
             id: -1,
             senderID: req.body.senderID,

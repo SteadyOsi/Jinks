@@ -56,3 +56,16 @@ export function updateMesByMesId(mesId: number, mesContent: String){
 
     return result;
 };
+
+export function getConvoByIdS(userIdOne: number, userIdTwo: number,){
+    const stmt = db.prepare(`
+        SELECT *
+        FROM messages
+        WHERE (senderID = ? and receiverID = ?) OR (senderID = ? and receiverID = ?)
+        ORDER BY createdAT;
+    `);
+
+    const messages = stmt.all(userIdOne,userIdTwo,userIdTwo,userIdOne) as Message[];
+    
+    return messages;
+}

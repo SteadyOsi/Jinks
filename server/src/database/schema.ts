@@ -1,25 +1,36 @@
 import db from "./db";
 
 export function initaliseDbTables() {
+
+    //Users
     const usersTable = `
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT NOT NULL,
             email TEXT UNIQUE NOT NULL,
-            password STRING NOT NULL
+            password TEXT NOT NULL
         )
     `;
 
     db.exec(usersTable);
 
+    // Messages
     const messageTable = `
         CREATE TABLE IF NOT EXISTS messages (
+
             id INTEGER PRIMARY KEY AUTOINCREMENT,
+        
             senderID INTEGER NOT NULL,
             receiverID INTEGER NOT NULL,
+        
             content TEXT NOT NULL,
-            createdAT TEXT NOT NULL 
+            createdAT TEXT NOT NULL,
+
+            FOREIGN KEY(senderID) REFERENCES users(id),
+            FOREIGN KEY(senderID) REFERENCES users(id)
         )
     `;
     db.exec(messageTable);
+
+
 }
