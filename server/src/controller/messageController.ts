@@ -60,13 +60,11 @@ export function delID(req: Request, res: Response) {
 
 export function addMes(req: Request, res: Response) {
 
-    if(typeof req.body.senderID === "number" 
+    if(typeof req.body.senderID === "number"
         && typeof req.body.content === "string"
         && typeof req.body.receiverID === "number" 
-        && req.body.senderID.trim() !== "" 
-        && req.body.content.trim() !== "" 
-        && req.body.receiverID.trim() !== ""){
-            
+        && req.body.content.trim() !== ""){
+
         const newMessage: Message = {
             id: -1,
             senderID: req.body.senderID,
@@ -76,6 +74,8 @@ export function addMes(req: Request, res: Response) {
         };
 
         const addMesRes = addMessage(newMessage);
+
+        
 
         if(addMesRes){
             return res.json({ success: true, message: newMessage });

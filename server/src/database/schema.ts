@@ -45,12 +45,12 @@ export function initaliseDbTables() {
 
     // conversation_members
     const conversation_Members_Table = `
-        CREATE TABLE IF NOT EXISTS conversations (
+        CREATE TABLE IF NOT EXISTS conversationMembers (
             conversationID INTEGER NOT NULL,
             userID INTEGER NOT NULL,
 
-            FOREIGN KEY(conversationID) REFERENCES users(id),
-            FOREIGN KEY(userID) REFERENCES conversations(id)
+            FOREIGN KEY(conversationID) REFERENCES conversations(id),
+            FOREIGN KEY(userID) REFERENCES users(id)
         )
     `;
 
