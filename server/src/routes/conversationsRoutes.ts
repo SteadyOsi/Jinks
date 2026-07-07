@@ -1,12 +1,17 @@
 import { Router } from "express";
-import { getAllConvo } from "../controller/conversationController";
+import {
+  getAllConvo,
+  createConvo,
+  getConvoByID,
+  delConvoByID,
+} from "../controller/conversationController";
 
 const router = Router();
 
 router.get("/", getAllConvo); // gets all the conversations
-router.get("/:ID",);
-router.delete("/:ID",);
-router.post("",);
-router.patch("/:ID",);
+router.get("/:ID", getConvoByID);
+router.delete("/:ID", delConvoByID);
+router.post("/", createConvo);
+// router.patch("/:ID");
 
 export default router;
