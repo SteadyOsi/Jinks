@@ -46,3 +46,15 @@ export function delConvoByIDRepo(convoID: number) {
 
   return result;
 }
+
+export function getConvoIDByTitleRepo(title: string){
+  const stmt = db.prepare(`
+    SELECT id
+    FROM conversations
+    WHERE title = ?
+  `);
+
+  const result = stmt.get(title) as number;
+
+  return result;
+}

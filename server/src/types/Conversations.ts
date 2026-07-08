@@ -7,4 +7,5 @@ export type Conversation = {
 export type ConvoInit = {
   title: string;
   createdAT: string;
+  members: number[];
 };
