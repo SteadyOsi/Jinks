@@ -1,9 +1,9 @@
 import { Router } from "express";
 import {
-  getAllConvo,
-  createConvo,
-  getConvoByID,
-  delConvoByID,
+        getAllConvo,
+        createConvo,
+        getConvoByID,
+        delConvoByID,
 } from "../controller/conversationController";
 
 const router = Router();

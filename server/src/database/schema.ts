@@ -1,8 +1,8 @@
 import db from "./db";
 
 export function initaliseDbTables() {
-  //Users
-  const usersTable = `
+        //Users
+        const usersTable = `
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT NOT NULL,
@@ -11,10 +11,10 @@ export function initaliseDbTables() {
         )
     `;
 
-  db.exec(usersTable);
+        db.exec(usersTable);
 
-  // Messages
-  const messageTable = `
+        // Messages
+        const messageTable = `
         CREATE TABLE IF NOT EXISTS messages (
 
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,10 +29,10 @@ export function initaliseDbTables() {
             FOREIGN KEY(receiverID) REFERENCES users(id)
         )
     `;
-  db.exec(messageTable);
+        db.exec(messageTable);
 
-  // Conversations
-  const conversationsTable = `
+        // Conversations
+        const conversationsTable = `
         CREATE TABLE IF NOT EXISTS conversations (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             createdAT TEXT NOT NULL,
@@ -40,10 +40,10 @@ export function initaliseDbTables() {
         )
     `;
 
-  db.exec(conversationsTable);
+        db.exec(conversationsTable);
 
-  // conversation_members
-  const conversation_Members_Table = `
+        // conversation_members
+        const conversation_Members_Table = `
         CREATE TABLE IF NOT EXISTS conversationMembers (
             conversationID INTEGER NOT NULL,
             userID INTEGER NOT NULL,
@@ -53,5 +53,5 @@ export function initaliseDbTables() {
         )
     `;
 
-  db.exec(conversation_Members_Table);
+        db.exec(conversation_Members_Table);
 }

@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("server is running");
+        res.send("server is running");
 });
 
 app.use("/messages/", messageRouter);
@@ -24,7 +24,7 @@ app.use("/user/", userRouter);
 app.use("/conversations/", conversationRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+        console.log(`Server running on port ${PORT}`);
 });
 
 // next thing to do next is sorting out the members when creating a conversation [x]
