@@ -27,5 +27,5 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// next thing to do next is sorting out the members when creating a conversation
-// also need to get the messages of the conversation.
+// next thing to do next is sorting out the members when creating a conversation [x]
+// also need to get the messages of the conversation. []

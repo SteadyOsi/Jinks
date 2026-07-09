@@ -47,14 +47,14 @@ export function delConvoByIDRepo(convoID: number) {
   return result;
 }
 
-export function getConvoIDByTitleRepo(title: string){
+export function getConvoIDByTitleRepo(title: string) {
   const stmt = db.prepare(`
     SELECT id
     FROM conversations
     WHERE title = ?
   `);
 
-  const result = stmt.get(title) as number;
+  const result = stmt.get(title) as { id: number };
 
-  return result;
+  return result?.id;
 }

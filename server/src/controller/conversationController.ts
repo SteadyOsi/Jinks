@@ -7,7 +7,7 @@ import {
   getAllConvoRepo,
   getConvoByIDRepo,
   delConvoByIDRepo,
-  getConvoIDByTitleRepo
+  getConvoIDByTitleRepo,
 } from "../repositories/conversationRepository";
 
 // get all of the Convos
@@ -18,30 +18,30 @@ export function getAllConvo(req: Request, res: Response) {
 // create a convo
 export function createConvo(req: Request, res: Response) {
   // checking that the http inputs are valid
-  if (typeof req.body.title === "string" && req.body.title.trim() !== "" &&
-      Array.isArray(req.body.memberIDs) && req.body.memberIDs.every((id: number) => typeof id === "number")) {
-
+  if (
+    typeof req.body.title === "string" &&
+    req.body.title.trim() !== "" &&
+    Array.isArray(req.body.memberIDs) &&
+    req.body.memberIDs.every((id: number) => typeof id === "number")
+  ) {
     const newConvo: ConvoInit = {
       title: req.body.title,
       createdAT: new Date().toISOString(),
-      members: req.body.memberIDs
+      members: req.body.memberIDs,
     };
 
     const createdConvoRes = createConvoRepo(newConvo);
     console.log(getConvoIDByTitleRepo(newConvo.title));
     console.log("debug");
 
-
-    newConvo.members.forEach(userID => {
-
+    newConvo.members.forEach((userID) => {
       const newMember: ConvoMember = {
-        conversationID:getConvoIDByTitleRepo(newConvo.title),
-        userID: userID
+        conversationID: getConvoIDByTitleRepo(newConvo.title),
+        userID: userID,
       };
 
       const result = createMemberRepo(newMember);
     });
-
 
     if (createdConvoRes) {
       return res.json({ success: true, conversation: newConvo });
