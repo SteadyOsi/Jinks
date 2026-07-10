@@ -57,6 +57,7 @@ export function createConvo(req: Request, res: Response) {
 }
 
 // get a convo by ID
+// -> this is to be updated to get the convo messages as well
 export function getConvoByID(req: Request, res: Response) {
         const convoID = parseInt(req.params.ID as string);
         const convoRes = getConvoByIDRepo(convoID);

@@ -46,6 +46,7 @@ export function getConvoUoneToUtwo(req: Request, res: Response) {
         }
 }
 
+// delete a user message based on message ID
 export function delID(req: Request, res: Response) {
         // get id
         const id = parseInt(req.params.id as string);

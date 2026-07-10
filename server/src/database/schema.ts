@@ -20,13 +20,13 @@ export function initaliseDbTables() {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
         
             senderID INTEGER NOT NULL,
-            receiverID INTEGER NOT NULL,
+            conversationID INTEGER NOT NULL,
         
             content TEXT NOT NULL,
             createdAT TEXT NOT NULL,
 
             FOREIGN KEY(senderID) REFERENCES users(id),
-            FOREIGN KEY(receiverID) REFERENCES users(id)
+            FOREIGN KEY(conversationID) REFERENCES conversations(id)
         )
     `;
         db.exec(messageTable);
