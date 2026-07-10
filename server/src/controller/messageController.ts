@@ -72,13 +72,13 @@ export function addMes(req: Request, res: Response) {
         if (
                 typeof req.body.senderID === "number" &&
                 typeof req.body.content === "string" &&
-                typeof req.body.receiverID === "number" &&
+                typeof req.body.conversationID === "number" &&
                 req.body.content.trim() !== ""
         ) {
                 const newMessage: Message = {
                         id: -1,
                         senderID: req.body.senderID,
-                        receiverID: req.body.receiverID,
+                        conversationID: req.body.conversationID,
                         content: req.body.content,
                         createdAT: new Date().toISOString(),
                 };

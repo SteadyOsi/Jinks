@@ -27,12 +27,12 @@ export function getMesByMesId(mesId: number) {
 
 export function addMessage(mes: Message) {
   const stmt = db.prepare(`
-        INSERT INTO messages (senderID, receiverID, content, createdAT) VALUES (?, ?, ?, ?)    
+        INSERT INTO messages (senderID, conversationID, content, createdAT) VALUES (?, ?, ?, ?)    
     `);
 
   const result = stmt.run(
     mes.senderID,
-    mes.receiverID,
+    mes.conversationID,
     mes.content,
     mes.createdAT,
   );

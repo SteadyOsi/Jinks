@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Conversation, ConvoInit } from "../types/Conversations";
+import { ConvoInit, ConversationDetails } from "../types/Conversations";
 import { ConvoMember } from "../types/ConvoMember";
 import { createMemberRepo } from "../repositories/convoMembersRepository";
 import {
@@ -8,6 +8,7 @@ import {
         getConvoByIDRepo,
         delConvoByIDRepo,
         getConvoIDByTitleRepo,
+        getMessagesForConvoRepo,
 } from "../repositories/conversationRepository";
 
 // get all of the Convos
@@ -57,13 +58,23 @@ export function createConvo(req: Request, res: Response) {
 }
 
 // get a convo by ID
-// -> this is to be updated to get the convo messages as well
+// and the messages of that convo
 export function getConvoByID(req: Request, res: Response) {
         const convoID = parseInt(req.params.ID as string);
-        const convoRes = getConvoByIDRepo(convoID);
+        const convoMetaRes = getConvoByIDRepo(convoID);
+        const convoMesRes = getMessagesForConvoRepo(convoID); 
 
-        if (convoRes) {
-                return res.json(convoRes);
+        console.log(convoMesRes);
+
+        const chatWithMes: ConversationDetails = {
+            id: convoMetaRes.id,
+            title: convoMetaRes.title,
+            createdAT: convoMetaRes.createdAT,
+            messages: convoMesRes
+        }
+
+        if (chatWithMes) {
+                return res.json(chatWithMes);
         } else {
                 return res.status(404).json({ error: "data not found" });
         }

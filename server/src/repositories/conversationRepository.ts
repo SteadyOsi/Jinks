@@ -64,11 +64,13 @@ export function getMessagesForConvoRepo(conversationID: number){
     const stmt = db.prepare(`
 		SELECT * 
 		FROM messages
-		WHERE id = ?
+		WHERE conversationID = ?
 		ORDER BY createdAT;
 
 	`);
 
 	const result = stmt.all(conversationID) as Message[];
+
+    console.log(result);
 	return result;
 }
