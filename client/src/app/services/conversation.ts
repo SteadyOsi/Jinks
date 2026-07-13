@@ -8,6 +8,6 @@ export class Conversation {
   constructor(private http: HttpClient) {}  
 
   getConversations() {
-    this.http.get()
+    return this.http.get("/conversations/");
   }
 }
