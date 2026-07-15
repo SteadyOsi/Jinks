@@ -8,6 +8,6 @@ export class ConversationService {
   constructor(private http: HttpClient) {}  
 
   getConversations() {
-    return this.http.get("http://localhost:3000/conversations/");
+    return this.http.get("http://localhost:3000/conversations/1");
   }
 }

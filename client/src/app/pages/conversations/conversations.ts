@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConversationService } from '../../services/conversation';
 
 @Component({
   selector: 'app-conversations',
@@ -6,4 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './conversations.html',
   styleUrl: './conversations.scss',
 })
-export class Conversations {}
+export class Conversations {
+    constructor(private convo: ConversationService) {} 
+
+    loadConversations() {
+    this.convo.getConversations().subscribe(data => {
+      console.log(data);
+    });
+  }
+}
