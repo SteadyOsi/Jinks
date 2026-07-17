@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConversationService } from '../../services/conversation';
+import { conversationWithMessages } from '../../models/conversationWithMessages';
 
 @Component({
   selector: 'app-conversations',
@@ -9,10 +10,11 @@ import { ConversationService } from '../../services/conversation';
 })
 export class Conversations {
     constructor(private convo: ConversationService) {} 
+    conversation?: conversationWithMessages;
 
     loadConversations() {
-    this.convo.getConversations().subscribe(data => {
-      console.log(data);
+    this.convo.getConversations(1).subscribe(data => {
+      this.conversation = data;
     });
   }
 }
