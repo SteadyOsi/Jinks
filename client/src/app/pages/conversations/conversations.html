@@ -1,2 +1,8 @@
 <h1>Conversations</h1>
 <button (click)="loadConversations()">convos</button>
+<h2>{{ conversation?.title }}</h2>
+
+@for (message of conversation?.messages; track message.id) {
+  <p>{{ message.senderID }}</p>
+  <p>{{ message.content }}</p>
+}

@@ -9,11 +9,13 @@ import { conversationWithMessages } from '../../models/conversationWithMessages'
   styleUrl: './conversations.scss',
 })
 export class Conversations {
-    constructor(private convo: ConversationService) {} 
-    conversation?: conversationWithMessages;
+  constructor(private convo: ConversationService) {}
+  conversation?: conversationWithMessages;
+  a = 3;
+  b = 2;
 
-    loadConversations() {
-    this.convo.getConversations(1).subscribe(data => {
+  loadConversations() {
+    this.convo.getConversations(1).subscribe((data) => {
       this.conversation = data;
     });
   }
