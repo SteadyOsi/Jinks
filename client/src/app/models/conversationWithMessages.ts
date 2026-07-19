@@ -1,8 +1,8 @@
-import { Message } from "./message";
+import { Message } from './message';
 
-export interface conversationWithMessages {
-    id: number;
-    title: string | null;
-    createdAT: string;
-    messages: Message[];
+export interface ConversationWithMessages {
+  id: number;
+  title: string | null;
+  createdAT: string;
+  messages: Message[];
 }
