@@ -5,3 +5,5 @@
 @for (message of conversation?.messages; track message.id) {
   <p>{{ message.senderID }}: {{ message.content }}</p>
 }
+
+<ConversationPreview [chat]="Conversations[0]"></ConversationPreview>
