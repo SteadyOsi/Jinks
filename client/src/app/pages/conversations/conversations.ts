@@ -10,7 +10,7 @@ import { ConversationWithMessages } from '../../models/conversationWithMessages'
 })
 export class Conversations {
   constructor(private convo: ConversationService) {}
-  conversation?: conversationWithMessages;
+  conversation?: ConversationWithMessages;
   a = 3;
   b = 2;
 
