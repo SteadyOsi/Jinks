@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ConversationService } from '../../services/conversation';
-import { conversationWithMessages } from '../../models/conversationWithMessages';
+import { ConversationWithMessages } from '../../models/conversationWithMessages';
 
 @Component({
   selector: 'app-conversations',
