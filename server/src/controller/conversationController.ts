@@ -16,6 +16,11 @@ export function getAllConvo(req: Request, res: Response) {
     return res.json(getAllConvoRepo());
 }
 
+// get all convo preivews NEED TO DO
+export function getAllConvoPreviews{
+    return 0;
+}
+
 // create a convo
 export function createConvo(req: Request, res: Response) {
     // checking that the http inputs are valid

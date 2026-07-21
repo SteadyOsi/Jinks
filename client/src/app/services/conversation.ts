@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {conversationWithMessages} from '../models/conversationWithMessages'
+import {ConversationWithMessages} from '../models/conversationWithMessages'
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import {conversationWithMessages} from '../models/conversationWithMessages'
 export class ConversationService {
   constructor(private http: HttpClient) {}  
 
-  getConversations(id: number) {
-    return this.http.get<conversationWithMessages>(`http://localhost:3000/conversations/${id}`);
+  getConversationsPreview() { // change this to get a list of conversations with the last message.
+    return this.http.get<ConversationWithMessages>(`http://localhost:3000/conversationsPreview`);
   }
 }
