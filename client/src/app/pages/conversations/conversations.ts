@@ -12,11 +12,9 @@ import { ConversationPreview } from '../../shared/conversation-preview/conversat
 export class Conversations {
   constructor(private convo: ConversationService) {}
   conversation?: ConversationWithMessages;
-  a = 3;
-  b = 2;
 
   loadConversations() { // change this to get a list of conversations with the last message.
-    this.convo.getConversations().subscribe((data) => {
+    this.convo.getConversationsPreview().subscribe((data) => {
       this.conversation = data;
     });
   }

@@ -10,7 +10,6 @@ export function initaliseDbTables() {
             password TEXT NOT NULL
         )
     `;
-
         db.exec(usersTable);
 
         // Messages

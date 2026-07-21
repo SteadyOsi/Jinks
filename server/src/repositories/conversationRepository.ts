@@ -74,3 +74,17 @@ export function getMessagesForConvoRepo(conversationID: number){
     console.log(result);
 	return result;
 }
+
+export function getAllConvoPreviewsRepo(){
+    const stmt = db.prepare(`
+		SELECT * 
+		FROM messages
+		WHERE conversationID = ?
+		ORDER BY createdAT;
+
+	`);
+
+    const result = stmt.all() as // have type here
+
+    return result;
+}
