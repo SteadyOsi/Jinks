@@ -1,4 +1,9 @@
-import { Conversation, ConvoInit } from "../types/Conversations";
+import {
+    Conversation,
+    ConvoInit,
+    ConversationPreview,
+    ConversationDetails,
+} from "../types/Conversations";
 import { Message } from "../types/Message";
 import db from "../database/db";
 
@@ -30,9 +35,9 @@ export function getConvoByIDRepo(convoID: number) {
         WHERE c.id = ?;
     `);
 
-        const result = stmt.get(convoID) as Conversation;
+    const result = stmt.get(convoID) as Conversation;
 
-        return result;
+    return result;
 }
 
 // delete convo by ID
@@ -43,9 +48,9 @@ export function delConvoByIDRepo(convoID: number) {
         WHERE id = ?  
     `);
 
-        const result = stmt.run(convoID); // if result.changes === 0 then no user with that ID existed.
+    const result = stmt.run(convoID); // if result.changes === 0 then no user with that ID existed.
 
-        return result;
+    return result;
 }
 
 export function getConvoIDByTitleRepo(title: string) {
@@ -60,7 +65,7 @@ export function getConvoIDByTitleRepo(title: string) {
     return result?.id;
 }
 
-export function getMessagesForConvoRepo(conversationID: number){
+export function getMessagesForConvoRepo(conversationID: number) {
     const stmt = db.prepare(`
 		SELECT * 
 		FROM messages
@@ -69,22 +74,34 @@ export function getMessagesForConvoRepo(conversationID: number){
 
 	`);
 
-	const result = stmt.all(conversationID) as Message[];
+    const result = stmt.all(conversationID) as Message[];
 
     console.log(result);
-	return result;
+    return result;
 }
 
-export function getAllConvoPreviewsRepo(){
+// used for the conversations preview page, gets the last message of each conversation
+export function getAllConvoPreviewsRepo() {
     const stmt = db.prepare(`
-		SELECT * 
-		FROM messages
-		WHERE conversationID = ?
-		ORDER BY createdAT;
+		SELECT
+            c.id,
+            c.title,
+            c.createdAT,
+            m.content AS lastMessage,
+            m.createdAT
+        FROM conversations c
+        LEFT JOIN messages m
+            ON m.id = (
+                SELECT id
+                FROM messages
+                WHERE conversationID = c.id
+                ORDER BY createdAT DESC
+                LIMIT 1
+            );
 
 	`);
 
-    const result = stmt.all() as // have type here
+    const result = stmt.all() as ConversationPreview[]; // have type here
 
     return result;
 }

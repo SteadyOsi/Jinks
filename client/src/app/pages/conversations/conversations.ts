@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ConversationService } from '../../services/conversation';
-import { ConversationWithMessages } from '../../models/conversationWithMessages';
+import { ConversationPreviewMod } from '../../models/conversationPreviewMod';
 import { ConversationPreview } from '../../shared/conversation-preview/conversation-preview';
 
 @Component({
@@ -11,11 +11,13 @@ import { ConversationPreview } from '../../shared/conversation-preview/conversat
 })
 export class Conversations {
   constructor(private convo: ConversationService) {}
-  conversation?: ConversationWithMessages;
+  conversations: ConversationPreviewMod[] = [];
 
-  loadConversations() { // change this to get a list of conversations with the last message.
+  loadConversations() {
+    // change this to get a list of conversations with the last message.
     this.convo.getConversationsPreview().subscribe((data) => {
-      this.conversation = data;
+      this.conversations = data;
+      console.log(this.conversations);
     });
   }
 }

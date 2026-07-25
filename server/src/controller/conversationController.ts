@@ -7,8 +7,8 @@ import {
     getAllConvoRepo,
     getConvoByIDRepo,
     delConvoByIDRepo,
-    getConvoIDByTitleRepo,
     getMessagesForConvoRepo,
+    getAllConvoPreviewsRepo,
 } from "../repositories/conversationRepository";
 
 // get all of the Convos
@@ -17,8 +17,8 @@ export function getAllConvo(req: Request, res: Response) {
 }
 
 // get all convo preivews NEED TO DO
-export function getAllConvoPreviews(){
-    return 0;
+export function getAllConvoPreviews(req: Request, res: Response) {
+    return res.json(getAllConvoPreviewsRepo());
 }
 
 // create a convo

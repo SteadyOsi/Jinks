@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ConversationWithMessages } from '../../models/conversationWithMessages';
+import { ConversationPreviewMod } from '../../models/conversationPreviewMod';
 
 @Component({
   selector: 'app-conversation-preview',
@@ -9,7 +9,5 @@ import { ConversationWithMessages } from '../../models/conversationWithMessages'
   styleUrl: './conversation-preview.scss',
 })
 export class ConversationPreview {
-  @Input()
-  chat!: ConversationWithMessages;
+  @Input() chat!: ConversationPreviewMod;
 }
-
