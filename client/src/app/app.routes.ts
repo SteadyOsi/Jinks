@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
+import { Layout } from './layout/layout';
 import { Login } from './pages/login/login';
 import { Conversations } from './pages/conversations/conversations';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Home,
+    component: Layout,
   },
   {
     path: 'conversations',
