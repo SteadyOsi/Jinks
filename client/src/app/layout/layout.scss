@@ -1,13 +1,19 @@
 .layout {
   height: 100vh;
   display: grid;
-  grid-template-columns: 50px 1fr 4fr;
+  grid-template-columns: 70px 1fr 4fr;
   grid-template-rows: 1fr;
+  gap: 10px;
+  padding: 10px;
 
   grid-template-areas: 
     "sidebar thumbNail chatWindow";
 
   height: 100%;
+}
+
+.items {
+  border-radius: 10px;
 }
 
 app-sidebar {

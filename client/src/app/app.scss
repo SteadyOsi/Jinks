@@ -11,11 +11,9 @@
 
 main { // without this the elements in layout cannot take up the whole page.
   height: 100vh;
-  display: block
+  // display: block
 }
 
 app-root {
   display: block;
-  height: 100vh;
-
 }
