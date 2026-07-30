@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ConversationService } from '../services/conversation';
-import { ConversationPreviewMod } from '../models/conversationPreviewMod';
+import { conversationPreview } from '../models/conversationPreview';
 import { ConversationPreview } from '../shared/conversation-preview/conversation-preview';
 
 @Component({
@@ -12,7 +12,7 @@ import { ConversationPreview } from '../shared/conversation-preview/conversation
 })
 export class ChatThumbNail {
   constructor(private convo: ConversationService) {}
-  conversations: ConversationPreviewMod[] = [];
+  conversations: conversationPreview[] = [];
 
   loadConversations() {
     // change this to get a list of conversations with the last message.

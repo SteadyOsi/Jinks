@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ConversationPreviewMod } from '../../models/conversationPreviewMod';
+import { conversationPreview } from '../../models/conversationPreview';
 
 @Component({
   selector: 'app-conversation-preview',
@@ -9,5 +9,5 @@ import { ConversationPreviewMod } from '../../models/conversationPreviewMod';
   styleUrl: './conversation-preview.scss',
 })
 export class ConversationPreview {
-  @Input() chat!: ConversationPreviewMod;
+  @Input() chat!: conversationPreview;
 }
