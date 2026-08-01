@@ -1,13 +1,8 @@
 <div class="chatThumbNail">
   <h3>Conversations</h3>
   <button (click)="loadConversations()">convos</button>
-  <!-- <h2>{{ conversations[0]?.title }}</h2> -->
 
-  <!-- @for (message of conversation?.messages; track message.id) {
-    <p>{{ message.senderID }}: {{ message.content }}</p>
-  } -->
-
-  @if (conversations.length > 0) {
-    <app-conversation-preview [chat]="conversations[0]"></app-conversation-preview>
+  @for (conversation of conversations; track conversation.id) {
+    <app-conversation-preview [chat]="conversation"></app-conversation-preview>
   }
 </div>
