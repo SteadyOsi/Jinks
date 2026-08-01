@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ConversationService } from '../services/conversation';
 import { conversationPreview } from '../models/conversationPreview';
@@ -6,19 +6,26 @@ import { ConversationPreview } from '../shared/conversation-preview/conversation
 
 @Component({
   selector: 'app-chat-thumb-nail',
+  standalone: true,
   imports: [ConversationPreview],
   templateUrl: './chat-thumb-nail.html',
   styleUrl: './chat-thumb-nail.scss',
 })
-export class ChatThumbNail {
+export class ChatThumbNail implements OnInit {
   constructor(private convo: ConversationService) {}
   conversations: conversationPreview[] = [];
 
+  ngOnInit() {
+    this.loadConversations();
+  }
+
   loadConversations() {
-    // change this to get a list of conversations with the last message.
     this.convo.getConversationsPreview().subscribe((data) => {
       this.conversations = data;
-      console.log(this.conversations);
     });
+  }
+
+  trackByConversation(index: number, conversation: conversationPreview) {
+    return conversation.id;
   }
 }
