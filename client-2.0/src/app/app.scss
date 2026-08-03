@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.main {
+  display: block;
+  height: 100vh; // this is the height of the viewport
+  width: 100%;
+  padding: 10px;
+}
+
+app-chat-page {
+  display: block;
+  height: 100%;
+}

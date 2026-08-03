@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ChatPage } from './pages/chat-page/chat-page';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ChatPage],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
