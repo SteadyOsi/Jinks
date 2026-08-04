@@ -1,4 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* Backgrounds */
+  --primary: #000000;
+  --secondary: #212121;
+  --tertiary: #212121;
+
+  --primaryAccent: #f56e0f;
+
+  --primaryText: #fafafa;
+  --secondaryText: #a1a1aa;
+
+  // /* Text */
+  // --text-primary: #ffffff;
+  // --text-secondary: #b5bac1;
+
+  // /* Brand */
+  // --accent: #5865f2;
+
+  /* Borders */
+  --border: #0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,4 +29,5 @@
 body {
   height: 100vh;
   width: 100%;
+  background-color: var(--primary);
 }
