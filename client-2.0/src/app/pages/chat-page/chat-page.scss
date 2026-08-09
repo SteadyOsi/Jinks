@@ -8,10 +8,12 @@
   height: 100%;
 
   display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-columns: 1fr 4fr;
-  grid-template-areas: 'navbar navbar' 'sidebar chat';
-  gap: 18px;
+  grid-template-rows: 1fr;
+  grid-template-columns: 60px 1fr 4fr;
+  grid-template-areas: 'navbar sidebar chat';
+  gap: 0px;
+
+  box-sizing: border-box;
 }
 
 .navbar,
@@ -30,4 +32,5 @@
 
 .chat {
   grid-area: chat;
+  margin-left: 2px;
 }

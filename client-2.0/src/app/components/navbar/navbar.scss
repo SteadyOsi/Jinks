@@ -2,6 +2,52 @@
   background-color: var(--primaryAccent);
   width: 100%;
   height: 100%;
-  border-radius: 7px;
+  border-radius: 0px;
   border: 1px solid var(--border);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plus-square {
+  margin-top: 10px;
+}
+
+.navbar-bottom-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100px;
+  padding-bottom: 10px;
+}
+
+.stanBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.stanBtn img {
+  width: 35px;
+  height: 35px;
+}
+
+.stanBtn:hover {
+  background: var(--secondaryText);
+  transition: all 0.15s ease-in-out;
 }
