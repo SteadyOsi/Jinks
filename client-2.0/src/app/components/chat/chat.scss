@@ -3,5 +3,13 @@
   width: 100%;
   height: 100%;
   border-radius: 0px;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
+
+  display: block;
+  // flex-direction: column;
 }
+
+.mes-list {
+  height: 87%;
+}
+
