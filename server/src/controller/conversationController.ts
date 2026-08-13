@@ -16,7 +16,7 @@ export function getAllConvo(req: Request, res: Response) {
     return res.json(getAllConvoRepo());
 }
 
-// get all convo preivews NEED TO DO
+// get all convo preivews
 export function getAllConvoPreviews(req: Request, res: Response) {
     return res.json(getAllConvoPreviewsRepo());
 }
