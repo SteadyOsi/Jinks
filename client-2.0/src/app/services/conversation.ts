@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Httpclient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Conversation {
-  constructor(private http: Httpclient){}
+  constructor(private http: HttpClient) {}
 
-  
-  getThumbNail(){
+  getThumbNail() {
     return this.http.get('http://localhost:3000/messages');
   }
-  
 }
-s
