@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './conversation-list.html',
   styleUrl: './conversation-list.scss',
 })
-export class ConversationList {}
+export class ConversationList {
+  
+}
