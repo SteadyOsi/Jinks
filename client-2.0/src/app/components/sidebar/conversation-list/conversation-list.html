@@ -1,8 +1,10 @@
 <div class="convoList">
-    @for (conversation of conversations; track conversation.id) {
-        <div>
-            <h3>{{ conversation.title }}</h3>
-            <p>{{ conversation.lastMessage}}</p>
-        </div>
-    }
+  <p>Number of conversations: {{ conversations().length }}</p>
+
+  @for (conversation of conversations(); track conversation.id) {
+    <div>
+      <h3>{{ conversation.title }}</h3>
+      <p>{{ conversation.lastMessage }}</p>
+    </div>
+  }
 </div>
