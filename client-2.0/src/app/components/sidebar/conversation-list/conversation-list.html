@@ -1,9 +1,8 @@
 <div class="convoList">
-  <p>Number of conversations: {{ conversations().length }}</p>
 
   @for (conversation of conversations(); track conversation.id) {
-    <div>
-      <h3>{{ conversation.title }}</h3>
+    <div class="thumbNailTab">
+      <h3 >{{ conversation.title }}</h3>
       <p>{{ conversation.lastMessage }}</p>
     </div>
   }

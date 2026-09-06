@@ -1,0 +1,24 @@
+.thumbNailTab {
+    border-bottom: 2px solid var(--primary);
+    padding: 15px;
+    cursor: pointer;
+}
+
+.thumbNailTab:hover {
+    background: var(--secondaryText);
+    transition: all 0.15s ease-in-out;
+}
+
+.thumbNailTab:active {
+    background: var(--thirdText);
+    transition: all 0s;
+
+}
+
+.thumbNailTab h3 {
+    text-decoration: underline;
+}
+
+// .convoList {
+//     border: 2px solid var(--primary);
+// }
