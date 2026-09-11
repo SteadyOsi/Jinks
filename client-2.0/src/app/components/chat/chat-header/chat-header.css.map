@@ -1,1 +1,1 @@
-{"version":3,"sources":["chat-header.scss","chat-header.css"],"names":[],"mappings":"AAAA;EACI,mBAAA;EACA,aAAA;EACA,uCAAA;EACA,aAAA;EACA,mBAAA;EACA,QAAA;ACCJ","file":"chat-header.css"}
+{"version":3,"sources":["chat-header.scss","chat-header.css"],"names":[],"mappings":"AAAA;EACE,mBAAA;EACA,aAAA;EACA,uCAAA;EACA,aAAA;EACA,mBAAA;EACA,QAAA;EACA,gBAAA;EACA,wCAAA;ACCF;;ADEA;EACE,SAAA;EACA,2BAAA;EACA,eAAA;EACA,gBAAA;ACCF","file":"chat-header.css"}

@@ -1,5 +1,6 @@
 .mes-input {
-  border-top: 3px solid var(--primary);
+  border: 2px solid rgba(34, 52, 86, 0.12);
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   gap: 5px;
@@ -7,4 +8,5 @@
   text-align: center;
   box-sizing: border-box;
   padding: 12px;
+  margin: 0 10px 10px 10px;
 }/*# sourceMappingURL=message-input.css.map */

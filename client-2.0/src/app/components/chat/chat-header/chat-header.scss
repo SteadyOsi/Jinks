@@ -1,8 +1,17 @@
 .chat-header {
-    background-color: 0;
-    padding: 13px;
-    border-bottom: 2px solid var(--primary);
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+  background-color: 0;
+  padding: 13px;
+  border-bottom: 2px solid var(--primary);
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  border-radius: 0;
+  border: 1px solid rgba(34, 52, 86, 0.12);
+}
+
+.chat-header p {
+  margin: 0;
+  color: var(--primaryAccent);
+  font-size: 1rem;
+  font-weight: 700;
 }
