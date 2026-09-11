@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.main {
+  display: block;
+  height: 100vh;
+  width: 100%;
+  padding: 0px;
+}
+
+app-chat-page {
+  display: block;
+  height: 100%;
+}/*# sourceMappingURL=app.css.map */

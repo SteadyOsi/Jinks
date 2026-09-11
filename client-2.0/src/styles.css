@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Backgrounds */
+  --primary: #a7adb9;
+  --secondary: #e7e7e7;
+  --tertiary: #ebebeb;
+  --primaryAccent: #4d4d4d;
+  --primaryAccent: #223456;
+  --primaryText: #fafafa;
+  --secondaryText: #a1a1aa;
+  --thirdText: #909098;
+  /* Borders */
+  --border: #0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--primary);
+}/*# sourceMappingURL=styles.css.map */
