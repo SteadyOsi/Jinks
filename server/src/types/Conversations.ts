@@ -25,6 +25,6 @@ export type ConversationPreview = {
         id: number;
         title: string;
         createdAT: string;
-        lastMessage: string;
+        lastMessage: string | null;
+        lastMessageAt: string | null;
 }
-

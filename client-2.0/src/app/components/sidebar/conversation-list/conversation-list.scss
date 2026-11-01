@@ -46,3 +46,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.thumbNailTab .lastMessage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

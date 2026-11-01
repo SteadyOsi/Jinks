@@ -88,7 +88,7 @@ export function getAllConvoPreviewsRepo() {
             c.title,
             c.createdAT,
             m.content AS lastMessage,
-            m.createdAT
+            m.createdAT AS lastMessageAt
         FROM conversations c
         LEFT JOIN messages m
             ON m.id = (

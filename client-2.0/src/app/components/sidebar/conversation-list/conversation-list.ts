@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { ConversationPreview } from '../../../models/conversation';
 import { interval, Subscription } from 'rxjs';
 import { Conversation } from '../../../services/conversation';
 
 @Component({
   selector: 'app-conversation-list',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './conversation-list.html',
   styleUrl: './conversation-list.scss',
 })
