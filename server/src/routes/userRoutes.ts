@@ -4,7 +4,7 @@ import {getUser, delUser, addUser, updateUser } from "../controller/userControll
 
 const router = Router();
 
-// just temp while testing this, Goes directly to UserRepsitory for 
+// Temporary inspection endpoint that reads users directly from the repository.
 router.get("/", (req, res) => {
     res.json(getAllUsers());
 });

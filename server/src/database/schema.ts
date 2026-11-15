@@ -1,6 +1,7 @@
 import db from "./db";
 
 export function initaliseDbTables() {
+        // Create tables on startup so a fresh database can run without manual setup.
         //Users
         const usersTable = `
         CREATE TABLE IF NOT EXISTS users (

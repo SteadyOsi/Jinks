@@ -1,5 +1,5 @@
 <div class="chat-page">
   <app-navbar class="navbar"></app-navbar>
-  <app-sidebar class="sidebar"></app-sidebar>
-  <app-chat class="chat"></app-chat>
+  <app-sidebar class="sidebar" (conversationSelected)="selectedConversation($event)"></app-sidebar>
+  <app-chat class="chat" [conversationId]="selectedConversationId"></app-chat>
 </div>

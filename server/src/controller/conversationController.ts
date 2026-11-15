@@ -38,6 +38,7 @@ export function createConvo(req: Request, res: Response) {
 
         const createdConvoRes = createConvoRepo(newConvo);
 
+        // Save each participant using the ID SQLite assigned to the conversation.
         newConvo.members.forEach((userID) => {
             const newMember: ConvoMember = {
                 conversationID: createdConvoRes.lastInsertRowid as number,
@@ -61,6 +62,7 @@ export function createConvo(req: Request, res: Response) {
 // get a convo by ID
 // and the messages of that convo
 export function getConvoByID(req: Request, res: Response) {
+    // Combine the conversation's metadata with its ordered message history.
     const convoID = parseInt(req.params.ID as string);
     const convoMetaRes = getConvoByIDRepo(convoID);
 

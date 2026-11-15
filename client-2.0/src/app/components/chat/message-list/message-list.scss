@@ -3,5 +3,25 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+}
+
+.senderName {
+  font-size: 0.8rem;
+  color: var(--secondaryText);
+  margin-bottom: 4px;
+}
+
+.message {
+  border-radius: 12px;
+  background-color: var(--textbubble);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  align-self: flex-start;
+  width: fit-content;
   box-sizing: border-box;
+  overflow-wrap: anywhere;
 }

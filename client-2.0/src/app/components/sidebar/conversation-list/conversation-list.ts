@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { ConversationPreview } from '../../../models/conversation';
 import { interval, Subscription } from 'rxjs';
 import { Conversation } from '../../../services/conversation';
+import { EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-conversation-list',
@@ -17,6 +18,14 @@ export class ConversationList implements OnInit, OnDestroy {
 
   constructor(private conversationService: Conversation) {}
 
+  @Output() conversationSelected = new EventEmitter<number>();
+
+  // Send the selected conversation ID up to the page component.
+  selectConversation(id: number) {
+    console.log('Selected conversation from thumnails:', id);
+    this.conversationSelected.emit(id);
+  }
+
   ngOnInit() {
     // Get conversations immediately
     this.loadThumbNail();
@@ -28,6 +37,7 @@ export class ConversationList implements OnInit, OnDestroy {
   }
 
   loadThumbNail() {
+    // Refresh the sidebar from the server so preview text and times stay current.
     this.conversationService.getThumbNail().subscribe((data) => {
       console.log('Data received:', data);
 
@@ -38,6 +48,7 @@ export class ConversationList implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    // Stop the periodic refresh when this component is removed.
     this.pollingSubscription?.unsubscribe();
   }
 }

@@ -46,6 +46,7 @@ export async function addUser(req: Request, res: Response){
         && req.body.email.trim() !== ""
         && req.body.password.trim() !== ""){
 
+        // Hash the password before storing it so the plain text is never persisted.
         const newUser: User = {
             userID: -1,
             username: req.body.userName,
@@ -85,6 +86,7 @@ export async function updateUser(req: Request, res: Response) {
         return res.status(400).json({error: "invalid userID"});
     }
 
+    // Treat each supplied field as an independent partial update.
     // Username update
     if (username !== undefined) {
 

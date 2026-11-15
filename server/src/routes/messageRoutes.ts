@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
     res.json(getAllMessages()); // used for testing
 });
 
-// CRUD operations for messages
+// Message lookup and mutation endpoints; the conversation route returns messages in a chat.
 router.get("/conversations/:userid1/:userid2", getConvoUoneToUtwo);
 router.get("/:id", getMesID);
 router.delete("/:id", delID);

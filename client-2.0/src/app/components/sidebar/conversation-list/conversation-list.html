@@ -1,11 +1,12 @@
 <div class="convoList">
   @for (conversation of conversations(); track conversation.id) {
-    <div class="thumbNailTab">
+    <!-- loops through all the conversations creating them, User clicks on a thumbnail, that selects the conversation -->
+    <button type="button" class="thumbNailTab" (click)="selectConversation(conversation.id)">
       <h3>{{ conversation.title }}</h3>
       <div class="lastMessage">
         <p>{{ conversation.lastMessage }}</p>
         <p>{{ conversation.lastMessageAt | date: 'shortTime' }}</p>
       </div>
-    </div>
+    </button>
   }
 </div>

@@ -4,6 +4,7 @@
   </div>
 
   <div class="sidebar-body">
-    <app-conversation-list></app-conversation-list>
+    <app-conversation-list (conversationSelected)="conversationSelected.emit($event)">
+    </app-conversation-list>
   </div>
 </div>

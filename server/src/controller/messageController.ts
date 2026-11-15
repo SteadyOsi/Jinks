@@ -69,6 +69,7 @@ export function delID(req: Request, res: Response) {
 }
 
 export function addMes(req: Request, res: Response) {
+        // Accept only non-empty message text and attach the server creation time.
         if (
                 typeof req.body.senderID === "number" &&
                 typeof req.body.content === "string" &&

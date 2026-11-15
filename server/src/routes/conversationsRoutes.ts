@@ -9,7 +9,8 @@ import {
 
 const router = Router();
 
-router.get("/", getAllConvo); // gets all the conversations
+// Full list and lightweight sidebar previews are separate responses.
+router.get("/", getAllConvo);
 router.get("/preview/", getAllConvoPreviews)
 router.get("/:ID", getConvoByID);
 router.delete("/:ID", delConvoByID);

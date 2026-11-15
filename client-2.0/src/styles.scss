@@ -4,9 +4,10 @@
   --secondary: #ffffff;
   --tertiary: #e7f3ed;
   --primaryAccent: #21836b;
-  --primaryText: #192238;
-  --secondaryText: #748099;
-  --thirdText: #929bb0;
+
+  --textbubble: #b9f1d7;
+  --secondaryText: #74998b;
+  --thirdText: #93b092;
   --border: #e8ecf3;
 }
 
@@ -22,6 +23,11 @@ body {
   background-color: var(--primary);
   color: var(--primaryText);
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
     sans-serif;
 }

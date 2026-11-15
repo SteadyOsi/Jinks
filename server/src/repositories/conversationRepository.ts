@@ -66,6 +66,7 @@ export function getConvoIDByTitleRepo(title: string) {
 }
 
 export function getMessagesForConvoRepo(conversationID: number) {
+    // Keep messages in chronological order for display in the chat view.
     const stmt = db.prepare(`
 		SELECT * 
 		FROM messages
@@ -82,6 +83,8 @@ export function getMessagesForConvoRepo(conversationID: number) {
 
 // used for the conversations preview page, gets the last message of each conversation
 export function getAllConvoPreviewsRepo() {
+    // A correlated subquery picks the newest message for each conversation,
+    // while LEFT JOIN keeps conversations that do not have messages yet.
     const stmt = db.prepare(`
 		SELECT
             c.id,

@@ -64,6 +64,7 @@ export function updateMesByMesId(mesId: number, mesContent: String) {
 }
 
 export function getConvoByIdS(userIdOne: number, userIdTwo: number) {
+    // Return messages in either direction between the two users, oldest first.
     const stmt = db.prepare(`
         SELECT *
         FROM messages
