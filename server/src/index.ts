@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
-import messageRouter from "./routes/messageRoutes";
-import userRouter from "./routes/userRoutes";
-import conversationRouter from "./routes/conversationsRoutes";
+import messageRouter from "./services/messages/routes";
+import userRouter from "./services/users/routes";
+import conversationRouter from "./services/conversations/routes";
 import { initaliseDbTables } from "./database/schema";
 
 // Make sure the database schema exists before any route can query it.

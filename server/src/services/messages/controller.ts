@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { Message } from "../types/Message";
+import { Message } from "./types";
 import {
         addMessage,
         getMesByMesId,
         delMesByMesId,
         updateMesByMesId,
         getConvoByIdS,
-} from "../repositories/messageRepository";
+} from "./repository";
 
 export function getMesID(req: Request, res: Response) {
         // get message based on message ID

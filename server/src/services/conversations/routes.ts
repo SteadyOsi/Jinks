@@ -5,7 +5,7 @@ import {
         getConvoByID,
         delConvoByID,
         getAllConvoPreviews
-} from "../controller/conversationController";
+} from "./controller";
 
 const router = Router();
 

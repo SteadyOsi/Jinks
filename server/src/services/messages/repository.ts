@@ -1,5 +1,5 @@
-import { Message } from "../types/Message";
-import db from "../database/db";
+import { Message } from "./types";
+import db from "../../database/db";
 
 export function getAllMessages() {
     // used in testing

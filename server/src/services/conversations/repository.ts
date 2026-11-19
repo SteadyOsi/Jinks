@@ -3,9 +3,9 @@ import {
     ConvoInit,
     ConversationPreview,
     ConversationDetails,
-} from "../types/Conversations";
-import { Message } from "../types/Message";
-import db from "../database/db";
+} from "./types";
+import { Message } from "../messages/types";
+import db from "../../database/db";
 
 export function getAllConvoRepo() {
     const stmt = db.prepare(`

@@ -1,4 +1,4 @@
-import { Message } from "./Message";
+import { Message } from "../messages/types";
 
 export type Conversation = {
         id: number;

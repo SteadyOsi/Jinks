@@ -1,5 +1,5 @@
-import db from "../database/db";
-import { ConvoMember } from "../types/ConvoMember";
+import db from "../../database/db";
+import { ConvoMember } from "./ConvoMember";
 
 // adds a person to a chat effectly
 export function createMemberRepo(member: ConvoMember) {

@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { getAllMessages } from "../repositories/messageRepository";
-import {getMesID, delID, addMes, updateMes, getConvoUoneToUtwo} from "../controller/messageController"
+import { getAllMessages } from "./repository";
+import {getMesID, delID, addMes, updateMes, getConvoUoneToUtwo} from "./controller"
 
 const router = Router();
 

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { ConvoInit, ConversationDetails } from "../types/Conversations";
-import { ConvoMember } from "../types/ConvoMember";
-import { createMemberRepo } from "../repositories/convoMembersRepository";
+import { ConvoInit, ConversationDetails } from "./types";
+import { ConvoMember } from "./ConvoMember";
+import { createMemberRepo } from "./membersRepository";
 import {
     createConvoRepo,
     getAllConvoRepo,
@@ -9,7 +9,7 @@ import {
     delConvoByIDRepo,
     getMessagesForConvoRepo,
     getAllConvoPreviewsRepo,
-} from "../repositories/conversationRepository";
+} from "./repository";
 
 // get all of the Convos
 export function getAllConvo(req: Request, res: Response) {

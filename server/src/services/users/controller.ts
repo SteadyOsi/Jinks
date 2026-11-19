@@ -1,6 +1,6 @@
 import {Request, Response } from "express";
-import { User } from "../types/User";
-import { createUser, getUserById, deleteUser, updateUserName, updateUserEmail, updateUserPassword } from "../repositories/userRepository";
+import { User } from "./types";
+import { createUser, getUserById, deleteUser, updateUserName, updateUserEmail, updateUserPassword } from "./repository";
 import argon2 from "argon2";
 
 export function getUser(req: Request, res: Response){ // get's user by ID

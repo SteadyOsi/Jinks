@@ -1,5 +1,5 @@
-import { User } from "../types/User";
-import db from "../database/db";
+import { User } from "./types";
+import db from "../../database/db";
 
 export function createUser(user: User){
     const stmt = db.prepare(`
